@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" role="img" aria-labelledby="t d">
+  <title id="t">Comedian Timetable architecture</title>
+  <desc id="d">A problem file is read by ReaderWriter into comedians and demographics. The Scheduler runs one of three branches: Task 1 backtracking with MRV and LCV, Task 2 constrained backtracking, or Task 3 backtracking then simulated annealing. Timetable.scheduleChecker checks legality and computes cost, then the schedule is written out.</desc>
+  <style>
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #e6edf3; font-size: 14px; }
+    .s { fill: #8b949e; font-size: 12px; }
+    .n { fill: #161b22; stroke: #30363d; stroke-width: 1; }
+    .o { fill: #161b22; stroke: #3fb950; stroke-width: 1; }
+    .f { stroke: #58a6ff; }
+    .c { fill: none; stroke: #58a6ff; stroke-width: 1.5; stroke-dasharray: 6 8; animation: flow 2.4s linear infinite; }
+    .d1 { animation-delay: 0s; } .d2 { animation-delay: 0.3s; } .d3 { animation-delay: 0.6s; }
+    .d4 { animation-delay: 0.9s; } .d5 { animation-delay: 1.2s; }
+    @keyframes flow { from { stroke-dashoffset: 28; } to { stroke-dashoffset: 0; } }
+    @media (prefers-reduced-motion: reduce) { .c { animation: none; } }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+  <rect width="960" height="580" fill="#0d1117"/>
+
+  <rect class="n" x="40" y="30" width="240" height="60" rx="6"/>
+  <text x="160" y="56" text-anchor="middle">Problem file</text>
+  <text class="s" x="160" y="76" text-anchor="middle">ExampleProblems/Problem1-8.txt</text>
+
+  <rect class="n" x="360" y="30" width="240" height="60" rx="6"/>
+  <text x="480" y="56" text-anchor="middle">ReaderWriter.py</text>
+  <text class="s" x="480" y="76" text-anchor="middle">readRequirements</text>
+
+  <rect class="n" x="680" y="30" width="240" height="60" rx="6"/>
+  <text x="800" y="56" text-anchor="middle">Comedians + demographics</text>
+  <text class="s" x="800" y="76" text-anchor="middle">name, themes / 25 codes, topics</text>
+
+  <path class="c d1" d="M280 60 H356" marker-end="url(#a)"/>
+  <path class="c d2" d="M600 60 H676" marker-end="url(#a)"/>
+  <path class="c d3" d="M800 90 V130 H480 V146" marker-end="url(#a)"/>
+
+  <rect class="n f" x="360" y="150" width="240" height="56" rx="6"/>
+  <text x="480" y="175" text-anchor="middle">scheduler.py</text>
+  <text class="s" x="480" y="195" text-anchor="middle">Scheduler: one branch per task</text>
+
+  <path class="c d3" d="M480 206 V226 H175 V246" marker-end="url(#a)"/>
+  <path class="c d3" d="M480 206 V246" marker-end="url(#a)"/>
+  <path class="c d3" d="M480 226 H785 V246" marker-end="url(#a)"/>
+
+  <rect class="n" x="40" y="250" width="270" height="96" rx="6"/>
+  <text x="175" y="276" text-anchor="middle">Task 1: createSchedule</text>
+  <text class="s" x="175" y="300" text-anchor="middle">5 main shows per day</text>
+  <text class="s" x="175" y="320" text-anchor="middle">Backtracking, MRV and LCV ordering</text>
+
+  <rect class="n" x="345" y="250" width="270" height="96" rx="6"/>
+  <text x="480" y="276" text-anchor="middle">Task 2: createTestShowSchedule</text>
+  <text class="s" x="480" y="300" text-anchor="middle">10 shows per day, main and test</text>
+  <text class="s" x="480" y="320" text-anchor="middle">Weekly 4 h and daily 2 h limits</text>
+
+  <rect class="n" x="650" y="250" width="270" height="96" rx="6"/>
+  <text x="785" y="276" text-anchor="middle">Task 3: createMinCostSchedule</text>
+  <text class="s" x="785" y="300" text-anchor="middle">Task 2 backtracking first</text>
+  <text class="s" x="785" y="320" text-anchor="middle">then simulated annealing for cost</text>
+
+  <path class="c d4" d="M175 346 V376 H480 V396" marker-end="url(#a)"/>
+  <path class="c d4" d="M480 346 V396" marker-end="url(#a)"/>
+  <path class="c d4" d="M785 346 V376 H480" />
+
+  <rect class="n f" x="240" y="400" width="480" height="60" rx="6"/>
+  <text x="480" y="426" text-anchor="middle">timetable.py: Timetable.scheduleChecker</text>
+  <text class="s" x="480" y="446" text-anchor="middle">Legality check and cost</text>
+
+  <path class="c d5" d="M480 460 V498" marker-end="url(#a)"/>
+
+  <rect class="o" x="330" y="502" width="300" height="56" rx="6"/>
+  <text x="480" y="527" text-anchor="middle">Weekly timetable output</text>
+  <text class="s" x="480" y="547" text-anchor="middle">Monday to Friday, cli.py console and CSV</text>
+</svg>

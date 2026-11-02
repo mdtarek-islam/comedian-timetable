@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570" width="960" height="570" role="img" aria-labelledby="t d">
+  <title id="t">Comedian Timetable search timeline</title>
+  <desc id="d">Parse a problem, order demographics by MRV, backtrack with LCV, anneal for Task 3, then run scheduleChecker and write the timetable.</desc>
+  <style>
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #e6edf3; font-size: 13px; }
+    .h { font-size: 15px; font-weight: 600; }
+    .s { fill: #8b949e; font-size: 12px; }
+    .node { fill: #161b22; stroke: #30363d; stroke-width: 1; }
+    .out { fill: #161b22; stroke: #3fb950; stroke-width: 1; }
+    .focus { fill: #161b22; stroke: #58a6ff; stroke-width: 1; }
+    .edge { fill: none; stroke: #58a6ff; stroke-width: 2; stroke-dasharray: 8 8; animation: flow 1.6s linear infinite; }
+    .edge.green { stroke: #3fb950; }
+    .d1 { animation-delay: 0.2s; } .d2 { animation-delay: 0.4s; } .d3 { animation-delay: 0.6s; }
+    .d4 { animation-delay: 0.8s; } .d5 { animation-delay: 1.0s; } .d6 { animation-delay: 1.2s; }
+    @keyframes flow { to { stroke-dashoffset: -16; } }
+    @media (prefers-reduced-motion: reduce) { .edge { animation: none; } }
+  </style>
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker>
+  </defs>
+  <rect width="960" height="570" fill="#0d1117"/>
+
+  <text class="s" x="40" y="28" text-anchor="start">Search timeline</text>
+  <rect class="node" x="40" y="40" width="190" height="56" rx="6"/>
+  <text class="h" x="135" y="64" text-anchor="middle">ReaderWriter.py</text>
+  <text class="s" x="135" y="83" text-anchor="middle">parse problem file</text>
+  <path class="edge d1" d="M230 68 H270" marker-end="url(#ab)"/>
+  <rect class="focus" x="270" y="40" width="190" height="56" rx="6"/>
+  <text class="h" x="365" y="64" text-anchor="middle">sortedDemographics</text>
+  <text class="s" x="365" y="83" text-anchor="middle">MRV: tightest first</text>
+  <path class="edge d2" d="M460 68 H500" marker-end="url(#ab)"/>
+  <rect class="focus" x="500" y="40" width="190" height="56" rx="6"/>
+  <text class="h" x="595" y="64" text-anchor="middle">backtrack</text>
+  <text class="s" x="595" y="83" text-anchor="middle">LCV: comedian order</text>
+  <path class="edge d3" d="M690 68 H730" marker-end="url(#ab)"/>
+  <rect class="node" x="730" y="40" width="190" height="56" rx="6"/>
+  <text class="h" x="825" y="64" text-anchor="middle">validSlot1, validSlot2</text>
+  <text class="s" x="825" y="83" text-anchor="middle">slot and limit checks</text>
+  <path class="edge d4" d="M825 96 V133 H135 V190" marker-end="url(#ab)"/>
+  <text class="s" x="144" y="153" text-anchor="start">Task 3 only: start from the legal schedule</text>
+  <rect class="focus" x="40" y="190" width="190" height="56" rx="6"/>
+  <text class="h" x="135" y="214" text-anchor="middle">simulatedAnnealing</text>
+  <text class="s" x="135" y="233" text-anchor="middle">cooling loop</text>
+  <rect class="node" x="270" y="190" width="190" height="56" rx="6"/>
+  <text class="h" x="365" y="214" text-anchor="middle">swap</text>
+  <text class="s" x="365" y="233" text-anchor="middle">calculateCost of neighbour</text>
+  <rect class="node" x="500" y="190" width="190" height="56" rx="6"/>
+  <text class="h" x="595" y="214" text-anchor="middle">accept or reject</text>
+  <text class="s" x="595" y="233" text-anchor="middle">better, or worse by chance</text>
+  <rect class="focus" x="730" y="190" width="190" height="56" rx="6"/>
+  <text class="h" x="825" y="214" text-anchor="middle">scheduleChecker</text>
+  <text class="s" x="825" y="233" text-anchor="middle">legality and cost</text>
+  <path class="edge d5" d="M230 218 H270" marker-end="url(#ab)"/>
+  <path class="edge d6" d="M460 218 H500" marker-end="url(#ab)"/>
+  <path class="edge d1" d="M690 218 H730" marker-end="url(#ab)"/>
+  <path class="edge d2" d="M595 190 V168 H365 V190" marker-end="url(#ab)"/>
+  <text class="s" x="480" y="162" text-anchor="middle">repeat until cooled</text>
+  <rect class="out" x="730" y="320" width="190" height="56" rx="6"/>
+  <text class="h" x="825" y="344" text-anchor="middle">cli.py</text>
+  <text class="s" x="825" y="363" text-anchor="middle">print timetable, CSV</text>
+  <path class="edge green d3" d="M825 246 V320" marker-end="url(#ag)"/>
+  <text class="s" x="730" y="400" text-anchor="start">Exit code 0 for a legal schedule,</text>
+  <text class="s" x="730" y="418" text-anchor="start">1 otherwise.</text>
+  <rect class="node" x="40" y="300" width="650" height="230" rx="6"/>
+  <text class="h" x="60" y="326" text-anchor="start">Constraints</text>
+  <text class="s" x="60" y="358" text-anchor="start">Task 1: 5 main shows per day, backtracking with MRV and LCV.</text>
+  <text class="s" x="60" y="384" text-anchor="start">Task 2: 10 shows per day.</text>
+  <text class="s" x="60" y="410" text-anchor="start">Each demographic gets one main show and one test show.</text>
+  <text class="s" x="60" y="436" text-anchor="start">Each comedian has a 4 hour weekly limit.</text>
+  <text class="s" x="60" y="462" text-anchor="start">Each comedian has a 2 hour daily limit.</text>
+  <text class="s" x="60" y="488" text-anchor="start">Task 3: lowest-cost Task 2 timetable, found by backtracking then annealing.</text>
+</svg>
