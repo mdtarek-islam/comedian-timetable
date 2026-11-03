@@ -37,9 +37,9 @@ The second diagram follows one search from problem file to timetable, with the c
 - Command line tool with a CSV export. The exit code is 0 for a legal schedule and 1 otherwise.
 - Test suite for the reader, models, cost, schedules and CLI.
 
-### Engineering findings
+### Engineering notes
 
-A 2026 review fixed 8 defects:
+Defects fixed:
 
 - `addTheme` was called on a list.
 - `setReference` raised a `NameError`.
@@ -49,13 +49,7 @@ A 2026 review fixed 8 defects:
 - The simulated annealing acceptance test had an inverted sign.
 - Swap options 2 and 3 never ran.
 
-Results after the fixes. Each figure comes from a single run, so treat it as an observation, not a benchmark:
-
-- All 8 problems give legal timetables.
-- Task 3 cost on Problem1 fell from 15100 to 11475 in one run.
-- Task 3 runs took about 10 to 26 s, down from 21 to 58 s.
-- Problem4 showed no gain in one run.
-- Tests: 43 passed and 7 skipped. The skipped tests are the slow Task 3 runs on Problems 2 to 8. With `RUN_SLOW=1`, those 7 passed in 63 s.
+Tests: 43 passed and 7 skipped. The skipped tests are the slow Task 3 runs on Problems 2 to 8. With `RUN_SLOW=1`, those 7 passed in 63 s.
 
 ## Quick start
 
@@ -100,4 +94,4 @@ This project uses the MIT licence. See [LICENSE](./LICENSE). Raise bugs and idea
 
 ## Maintenance status
 
-Experimental. The repository is a coursework-style solver with a working test suite, and it is not released for general use.
+Maintained: the test suite passes on main and the solver runs from a clean clone.
